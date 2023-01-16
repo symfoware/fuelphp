@@ -256,6 +256,9 @@ class Request
 	 */
 	protected $children = array();
 
+	public $body;
+	public $lang;
+
 	/**
 	 * Creates the new Request object by getting a new URI object, then parsing
 	 * the uri with the Route class.

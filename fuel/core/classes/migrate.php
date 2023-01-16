@@ -482,7 +482,8 @@ class Migrate
 				}
 
 				// and that it contains an "up" and "down" method
-				if ( ! is_callable(array($class, 'up')) or ! is_callable(array($class, 'down')))
+				$instance = new $class;
+				if ( ! is_callable(array($instance, 'up')) or ! is_callable(array($instance, 'down')))
 				{
 					throw new \FuelException(sprintf('Migration class "%s" must include public methods "up" and "down"', $name));
 				}

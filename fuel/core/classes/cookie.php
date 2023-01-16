@@ -94,6 +94,9 @@ class Cookie
 		is_null($secure) and $secure = static::$config['secure'];
 		is_null($http_only) and $http_only = static::$config['http_only'];
 
+		is_null($domain) and $domain = '';
+		is_null($value) and $value = '';
+
 		// add the current time so we have an offset
 		$expiration = $expiration > 0 ? $expiration + time() : 0;
 

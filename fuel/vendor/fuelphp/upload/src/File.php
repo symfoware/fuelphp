@@ -551,7 +551,7 @@ class File implements \ArrayAccess, \Iterator, \Countable
 	/**
 	 * Countable methods
 	 */
-	public function count()
+	public function count(): int
 	{
 		return count($this->container);
 	}
@@ -559,22 +559,22 @@ class File implements \ArrayAccess, \Iterator, \Countable
 	/**
 	 * ArrayAccess methods
 	 */
-	public function offsetExists($offset)
+	public function offsetExists($offset): bool
 	{
 		return isset($this->container[$offset]);
 	}
 
-	public function offsetGet($offset)
+	public function offsetGet($offset): mixed
 	{
 		return $this->container[$offset];
 	}
 
-	public function offsetSet($offset, $value)
+	public function offsetSet($offset, $value): void
 	{
 		$this->container[$offset] = $value;
 	}
 
-	public function offsetUnset($offset)
+	public function offsetUnset($offset): void
 	{
 		throw new \OutOfBoundsException('You can not unset a data element of an Upload File instance');
 	}
@@ -582,27 +582,27 @@ class File implements \ArrayAccess, \Iterator, \Countable
 	/**
 	 * Iterator methods
 	 */
-	function rewind()
+	function rewind(): void
 	{
-		return reset($this->container);
+		reset($this->container);
 	}
 
-	function current()
+	function current(): ?string
 	{
 		return current($this->container);
 	}
 
-	function key()
+	function key(): string
 	{
 		return key($this->container);
 	}
 
-	function next()
+	function next(): void
 	{
-		return next($this->container);
+		next($this->container);
 	}
 
-	function valid()
+	function valid(): bool
 	{
 		return key($this->container) !== null;
 	}

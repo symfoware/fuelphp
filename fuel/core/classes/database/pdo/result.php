@@ -60,7 +60,7 @@ class Database_PDO_Result extends \Database_Result
 	 *
 	 * @return  mixed
 	 */
-	public function next()
+	public function next(): mixed
 	{
 		parent::next();
 

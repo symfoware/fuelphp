@@ -492,7 +492,7 @@ class Upload implements \ArrayAccess, \Iterator, \Countable
 	/**
 	 * Countable methods
 	 */
-	public function count()
+	public function count(): int
 	{
 		return count($this->container);
 	}
@@ -500,12 +500,12 @@ class Upload implements \ArrayAccess, \Iterator, \Countable
 	/**
 	 * ArrayAccess methods
 	 */
-	public function offsetExists($offset)
+	public function offsetExists($offset): bool
 	{
 		return isset($this->container[$offset]);
 	}
 
-	public function offsetGet($offset)
+	public function offsetGet($offset): mixed
 	{
 		// if the requested key is alphanumeric, do a search on element name
 		if (is_string($offset))
@@ -539,12 +539,12 @@ class Upload implements \ArrayAccess, \Iterator, \Countable
 		return null;
 	}
 
-	public function offsetSet($offset, $value)
+	public function offsetSet($offset, $value): void
 	{
 		throw new \OutOfBoundsException('An Upload Files instance is read-only, its contents can not be altered');
 	}
 
-	public function offsetUnset($offset)
+	public function offsetUnset($offset): void
 	{
 		throw new \OutOfBoundsException('An Upload Files instance is read-only, its contents can not be altered');
 	}
@@ -552,27 +552,27 @@ class Upload implements \ArrayAccess, \Iterator, \Countable
 	/**
 	 * Iterator methods
 	 */
-	public function rewind()
+	public function rewind(): void
 	{
 		$this->index = 0;
 	}
 
-	public function current()
+	public function current(): ?string
 	{
 		return $this->container[$this->index];
 	}
 
-	public function key()
+	public function key(): string
 	{
 		return $this->index;
 	}
 
-	public function next()
+	public function next(): void
 	{
 		++$this->index;
 	}
 
-	public function valid()
+	public function valid(): bool
 	{
 		return isset($this->container[$this->index]);
 	}

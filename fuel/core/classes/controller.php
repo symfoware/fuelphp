@@ -24,6 +24,8 @@ abstract class Controller
 	 */
 	public $response_status = 200;
 
+	public $response;
+
 	/**
 	 * Sets the controller request object.
 	 *

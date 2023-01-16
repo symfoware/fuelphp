@@ -204,7 +204,7 @@ class Image_Gd extends \Image_Driver
 
 		// Create new blank image
 		$image = $this->create_transparent_image($sizes->width, $sizes->height);
-		if (is_resource($maskimage))
+		if (is_resource($maskimage) || $maskimage instanceof \GdImage)
 		{
 			$maskim = $maskimage;
 		}
@@ -309,12 +309,12 @@ class Image_Gd extends \Image_Driver
 			$filename = $this->image_fullpath;
 		}
 
-		if ($filename == $this->image_fullpath && is_resource($this->image_data))
+		if ($filename == $this->image_fullpath && (is_resource($this->image_data) || $this->image_data instanceof \GdImage))
 		{
 			$width  = imagesx($this->image_data);
 			$height = imagesy($this->image_data);
 		}
-		elseif (is_resource($filename))
+		elseif (is_resource($filename) || $filename instanceof \GdImage)
 		{
 			$width  = imagesx($filename);
 			$height = imagesy($filename);
@@ -460,7 +460,7 @@ class Image_Gd extends \Image_Driver
 		imagefilledrectangle($image, 0, 0, $width, $height, $color);
 		imagealphablending($image, true);
 
-		if (is_resource($resource))
+		if (is_resource($resource) || $resource instanceof \GdImage)
 		{
 			imagecopy($image, $resource, 0, 0, 0, 0, $width, $height);
 		}

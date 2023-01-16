@@ -660,7 +660,7 @@ abstract class Session_Driver
 		}
 
 		// if not found, was a session-id present in the HTTP header?
-		if ($cookie === false)
+		if (($cookie === false) && isset($this->config['http_header_name']))
 		{
 			$cookie = \Input::headers($this->config['http_header_name'], false);
 		}

@@ -64,7 +64,7 @@ class Database_MySQLi_Result extends \Database_Result
 	 *
 	 * @return  mixed
 	 */
-	public function next()
+	public function next(): mixed
 	{
 		// Convert the result into an array, as PDOStatement::rowCount is not reliable
 		if ($this->_as_object === false)
